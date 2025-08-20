@@ -26,6 +26,5 @@ ADMIN_USERNAME = 'admin'
 ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD', 'changeme')
 OTREE_AUTH_LEVEL = environ.get('OTREE_AUTH_LEVEL', 'STUDY')
 
-DEMO_PAGE_INTRO_HTML = """
-<p>ECON 3310 Risky Investment experiment (10 rounds, one paying round).</p>
-"""
+# 🔴 ADD THIS LINE:
+SECRET_KEY = environ.get('SECRET_KEY', 'dev-secret-change-me')
