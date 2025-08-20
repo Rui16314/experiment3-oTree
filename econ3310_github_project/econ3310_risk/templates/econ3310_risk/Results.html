@@ -1,0 +1,9 @@
+{% extends "global/Page.html" %}
+{% block title %}Round {{ player.round_number }} result{% endblock %}
+{% block content %}
+<p>Coin flip: <b>{{ outcome_text }}</b></p>
+<p>Your choice x = <b>{{ player.x }}</b></p>
+<p>Your WEALTH this round = <b>{{ player.wealth }}</b></p>
+<p class="text-muted mt-2">Average x so far: <b>{{ avg_x }}</b></p>
+{{ next_button }}
+{% endblock %}

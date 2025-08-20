@@ -1,0 +1,8 @@
+{% extends "global/Page.html" %}
+{% block title %}Round {{ player.round_number }}{% endblock %}
+{% block content %}
+<p>You have <b>{{ C.ENDOWMENT }}</b> points. Choose how many to invest.</p>
+{{ formfields }}
+<p class="text-muted">Time remaining: <span class="otree-timer__time-left"></span></p>
+{{ next_button }}
+{% endblock %}

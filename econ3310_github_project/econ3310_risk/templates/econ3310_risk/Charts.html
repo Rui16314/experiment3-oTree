@@ -1,0 +1,41 @@
+{% extends "global/Page.html" %}
+{% block title %}Admin Charts{% endblock %}
+{% block content %}
+<p class="text-muted">This page is shown only to admins.</p>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<h5>Histogram (bins of 5)</h5>
+<canvas id="hist5"></canvas>
+<h5 class="mt-3">Histogram (bins of 10)</h5>
+<canvas id="hist10"></canvas>
+<h5 class="mt-3">Histogram (bins of 20)</h5>
+<canvas id="hist20"></canvas>
+<h5 class="mt-4">Average X by gender</h5>
+<canvas id="avgGender"></canvas>
+<h5 class="mt-3">Average X by age</h5>
+<canvas id="avgAge"></canvas>
+<h5 class="mt-3">Average X by race</h5>
+<canvas id="avgRace"></canvas>
+
+<script>
+const labels5   = {{ labels5|tojson }};
+const counts5   = {{ counts5|tojson }};
+const labels10  = {{ labels10|tojson }};
+const counts10  = {{ counts10|tojson }};
+const labels20  = {{ labels20|tojson }};
+const counts20  = {{ counts20|tojson }};
+const labelsG   = {{ labels_gender|tojson }};
+const valuesG   = {{ values_gender|tojson }};
+const labelsA   = {{ labels_age|tojson }};
+const valuesA   = {{ values_age|tojson }};
+const labelsR   = {{ labels_race|tojson }};
+const valuesR   = {{ values_race|tojson }};
+
+new Chart(document.getElementById('hist5'),  {type:'bar', data:{labels:labels5,  datasets:[{label:'Count', data:counts5}]} });
+new Chart(document.getElementById('hist10'), {type:'bar', data:{labels:labels10, datasets:[{label:'Count', data:counts10}]} });
+new Chart(document.getElementById('hist20'), {type:'bar', data:{labels:labels20, datasets:[{label:'Count', data:counts20}]} });
+new Chart(document.getElementById('avgGender'), {type:'bar', data:{labels:labelsG, datasets:[{label:'Avg X', data:valuesG}]} });
+new Chart(document.getElementById('avgAge'),    {type:'line', data:{labels:labelsA, datasets:[{label:'Avg X', data:valuesA, fill:false}]} });
+new Chart(document.getElementById('avgRace'),   {type:'bar', data:{labels:labelsR, datasets:[{label:'Avg X', data:valuesR}]} });
+</script>
+{% endblock %}
