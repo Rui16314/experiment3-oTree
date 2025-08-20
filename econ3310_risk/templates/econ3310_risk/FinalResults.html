@@ -1,0 +1,22 @@
+{% extends "global/Page.html" %}
+{% block title %}Final results{% endblock %}
+{% block content %}
+<p>Randomly selected paying round: <b>{{ paying_round }}</b></p>
+<p>Your payoff equals your WEALTH in that round: <b>{{ selected_wealth }}</b> points.</p>
+<h5 class="mt-3">Your decisions</h5>
+<table class="table table-sm">
+  <thead><tr><th>Round</th><th>x</th><th>Outcome</th><th>Wealth</th></tr></thead>
+  <tbody>
+    {% for r in history %}
+    <tr>
+      <td>{{ r.round }}</td>
+      <td>{{ r.x }}</td>
+      <td>{% if r.win %}Heads (WIN){% else %}Tails (LOSE){% endif %}</td>
+      <td>{{ r.wealth }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<p class="mt-2">Average x across all rounds: <b>{{ avg_x }}</b></p>
+{{ next_button }}
+{% endblock %}
